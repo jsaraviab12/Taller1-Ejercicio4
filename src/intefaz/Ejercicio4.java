@@ -71,15 +71,30 @@ public class Ejercicio4 extends javax.swing.JFrame {
                 txtMetrosActionPerformed(evt);
             }
         });
+        txtMetros.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMetrosKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtMetros, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 110, -1));
 
         txtCuotai.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 11)); // NOI18N
+        txtCuotai.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCuotaiKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtCuotai, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 100, -1));
 
         txtCuotaf.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 11)); // NOI18N
         txtCuotaf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCuotafActionPerformed(evt);
+            }
+        });
+        txtCuotaf.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCuotafKeyTyped(evt);
             }
         });
         jPanel1.add(txtCuotaf, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 100, -1));
@@ -97,11 +112,22 @@ public class Ejercicio4 extends javax.swing.JFrame {
         cmdBorrar.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 11)); // NOI18N
         cmdBorrar.setForeground(new java.awt.Color(102, 0, 0));
         cmdBorrar.setText("Borrar");
+        cmdBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdBorrarActionPerformed(evt);
+            }
+        });
         jPanel1.add(cmdBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 11)); // NOI18N
         jLabel5.setText("Valor total");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
+
+        txtValor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtValorKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 100, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -152,6 +178,58 @@ public class Ejercicio4 extends javax.swing.JFrame {
          
         }
     }//GEN-LAST:event_cmdCalcularActionPerformed
+
+    private void cmdBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBorrarActionPerformed
+        txtCuotaf.setText("");
+        txtCuotai.setText("");
+        txtMetros.setText("");
+        txtValor.setText("");
+        txtMetros.requestFocusInWindow();
+    }//GEN-LAST:event_cmdBorrarActionPerformed
+
+    private void txtMetrosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMetrosKeyTyped
+       char c=evt.getKeyChar();
+             
+         
+          if(!Character.isDigit(evt.getKeyChar()) &&evt.getKeyChar()!='.'){ 
+              getToolkit().beep(); 
+               
+              evt.consume();
+          }
+    }//GEN-LAST:event_txtMetrosKeyTyped
+
+    private void txtValorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtValorKeyTyped
+        char c=evt.getKeyChar();
+             
+         
+          if(!Character.isDigit(evt.getKeyChar()) &&evt.getKeyChar()!='.'){ 
+              getToolkit().beep(); 
+               
+              evt.consume();
+          }
+    }//GEN-LAST:event_txtValorKeyTyped
+
+    private void txtCuotaiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCuotaiKeyTyped
+        char c=evt.getKeyChar();
+             
+         
+          if(!Character.isDigit(evt.getKeyChar()) &&evt.getKeyChar()!='.'){ 
+              getToolkit().beep(); 
+               
+              evt.consume();
+          }
+    }//GEN-LAST:event_txtCuotaiKeyTyped
+
+    private void txtCuotafKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCuotafKeyTyped
+         char c=evt.getKeyChar();
+             
+         
+          if(!Character.isDigit(evt.getKeyChar()) &&evt.getKeyChar()!='.'){ 
+              getToolkit().beep(); 
+               
+              evt.consume();
+          }
+    }//GEN-LAST:event_txtCuotafKeyTyped
 
     /**
      * @param args the command line arguments
