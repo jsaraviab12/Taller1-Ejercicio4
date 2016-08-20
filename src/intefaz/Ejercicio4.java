@@ -5,6 +5,8 @@
  */
 package intefaz;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Jesus
@@ -16,6 +18,9 @@ public class Ejercicio4 extends javax.swing.JFrame {
      */
     public Ejercicio4() {
         initComponents();
+        txtCuotaf.setEditable(false);
+        txtCuotai.setEditable(false);
+        txtValor.setEditable(false);
     }
 
     /**
@@ -37,6 +42,8 @@ public class Ejercicio4 extends javax.swing.JFrame {
         txtCuotaf = new javax.swing.JTextField();
         cmdCalcular = new javax.swing.JButton();
         cmdBorrar = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        txtValor = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,11 +59,11 @@ public class Ejercicio4 extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 11)); // NOI18N
         jLabel3.setText("Cuota inicial");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 11)); // NOI18N
         jLabel4.setText("Cuotas mensuales");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
 
         txtMetros.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 14)); // NOI18N
         txtMetros.addActionListener(new java.awt.event.ActionListener() {
@@ -67,7 +74,7 @@ public class Ejercicio4 extends javax.swing.JFrame {
         jPanel1.add(txtMetros, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 110, -1));
 
         txtCuotai.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 11)); // NOI18N
-        jPanel1.add(txtCuotai, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 100, -1));
+        jPanel1.add(txtCuotai, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 100, -1));
 
         txtCuotaf.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 11)); // NOI18N
         txtCuotaf.addActionListener(new java.awt.event.ActionListener() {
@@ -75,17 +82,27 @@ public class Ejercicio4 extends javax.swing.JFrame {
                 txtCuotafActionPerformed(evt);
             }
         });
-        jPanel1.add(txtCuotaf, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 100, -1));
+        jPanel1.add(txtCuotaf, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 100, -1));
 
         cmdCalcular.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 12)); // NOI18N
         cmdCalcular.setForeground(new java.awt.Color(0, 102, 0));
         cmdCalcular.setText("Calcular");
-        jPanel1.add(cmdCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 233, 100, 30));
+        cmdCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdCalcularActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmdCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 100, 30));
 
         cmdBorrar.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 11)); // NOI18N
         cmdBorrar.setForeground(new java.awt.Color(102, 0, 0));
         cmdBorrar.setText("Borrar");
         jPanel1.add(cmdBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 11)); // NOI18N
+        jLabel5.setText("Valor total");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
+        jPanel1.add(txtValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 100, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -108,6 +125,33 @@ public class Ejercicio4 extends javax.swing.JFrame {
     private void txtCuotafActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCuotafActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCuotafActionPerformed
+
+    private void cmdCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCalcularActionPerformed
+        String res1, res2,res3;
+        double n1,precio=0,por,cui=0,cuo=0;
+        if (txtMetros.getText().trim().isEmpty() ){
+            JOptionPane.showMessageDialog(this,"Digite la cantidad de metros cuadrados","Error", JOptionPane.ERROR_MESSAGE);
+            txtMetros.requestFocusInWindow(); 
+        }else {
+            try {
+           n1 = Double.parseDouble(txtMetros.getText()); 
+           precio=(n1*80000);
+           por=(precio*35)/100;
+           cui=precio-por;
+           cuo=(precio-cui)/12;
+         }catch (Exception e){
+               JOptionPane.showMessageDialog(this,"Ingrese numero validos","Erro", JOptionPane.ERROR_MESSAGE);
+            txtMetros.requestFocusInWindow();
+         }
+         res1 = String.valueOf(precio);
+         res2 = String.valueOf(cui);
+         res3 = String.valueOf(Math.round(cuo));
+         txtValor.setText(res1);
+         txtCuotai.setText(res2);
+         txtCuotaf.setText(res3);
+         
+        }
+    }//GEN-LAST:event_cmdCalcularActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,9 +195,11 @@ public class Ejercicio4 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtCuotaf;
     private javax.swing.JTextField txtCuotai;
     private javax.swing.JTextField txtMetros;
+    private javax.swing.JTextField txtValor;
     // End of variables declaration//GEN-END:variables
 }
